@@ -1,0 +1,10 @@
+<button
+  (click)="toggle()"
+  [attr.aria-pressed]="isDark()"
+  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/80 dark:bg-slate-800/80
+         text-slate-700 dark:text-slate-100 shadow hover:shadow-md transition"
+  title="Toggle theme"
+>
+  <span aria-hidden>{{ isDark() ? '🌙' : '🌞' }}</span>
+  <span class="text-sm">{{ label() }}</span>
+</button>

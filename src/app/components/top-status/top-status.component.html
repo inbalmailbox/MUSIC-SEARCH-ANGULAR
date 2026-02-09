@@ -1,0 +1,23 @@
+<div class="bg-white/60 dark:bg-gray-900/60 backdrop-blur border-b border-black/5 dark:border-white/5">
+  <div class="max-w-7xl mx-auto px-5 h-12 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="chip">
+        <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+        {{ store.results().length }} results
+      </span>
+
+      <span class="chip" *ngIf="store.query().trim(); else ready">
+        <span class="opacity-70">query:</span> {{ store.query() }}
+      </span>
+      <ng-template #ready>
+        <span class="chip">ready</span>
+      </ng-template>
+
+      <span class="chip bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">Beta</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      
+    </div>
+  </div>
+</div>

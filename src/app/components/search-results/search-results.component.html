@@ -1,0 +1,31 @@
+<section class="space-y-4">
+  <p *ngIf="store.status() === 'failed'" class="text-red-600 text-sm">
+    {{ store.error() || 'Something went wrong.' }}
+  </p>
+
+  <div *ngIf="store.results().length === 0 && store.status() !== 'loading'" class="opacity-70">
+    No results yet.
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <app-tile-card
+    *ngFor="let t of store.results(); let i = index"
+    [title]="t.name"
+    [subtitle]="t.user.name || ''"
+    [img]="t.pictures?.medium || t.pictures?.large || t.pictures?.extra_large"
+    (click)="select(i)"
+  ></app-tile-card>
+
+  </div>
+
+  <div class="mt-4" *ngIf="store.canPage()">
+    <button
+      type="button"
+      (click)="next()"
+      class="btn-outline-brand h-12"
+      [disabled]="store.status() === 'loading'"
+    >
+      Next 6
+    </button>
+  </div>
+</section>

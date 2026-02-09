@@ -1,0 +1,20 @@
+<button (click)="click()" class="w-full text-left">
+  <div class="app-card app-card-hover relative overflow-hidden">
+    <div class="aspect-[4/3] w-full overflow-hidden">
+      <img
+        *ngIf="img"
+        [src]="img"
+        [alt]="title"
+        class="h-full w-full object-cover"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="p-4">
+      <h3 class="text-[15px] font-semibold leading-5 line-clamp-2">{{ title }}</h3>
+      <p *ngIf="subtitle" class="mt-1 text-xs text-slate-500 line-clamp-1">{{ subtitle }}</p>
+    </div>
+
+    <span *ngIf="badge !== undefined && badge !== null && badge !== ''" class="badge">{{ badge }}</span>
+  </div>
+</button>

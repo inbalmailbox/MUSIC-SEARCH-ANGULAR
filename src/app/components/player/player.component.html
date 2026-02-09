@@ -1,0 +1,48 @@
+<div class="app-card p-5 min-h-[460px] flex flex-col items-center justify-center text-center relative">
+  <p *ngIf="!selected(); else content" class="muted">Click a tile to preview & play here.</p>
+
+  <ng-template #content>
+    <div class="w-full max-w-xl">
+      <div
+        *ngIf="selected()?.pictures?.extra_large || selected()?.pictures?.medium"
+        class="max-h-40 md:max-h-56 overflow-hidden rounded-xl2 shadow-card mb-4 bg-slate-100 dark:bg-slate-800"
+      >
+        <img
+          [src]="selected()?.pictures?.extra_large || selected()?.pictures?.medium"
+          [alt]="selected()?.name || ''"
+          class="w-full h-full object-contain"
+          loading="lazy"
+        />
+      </div>
+
+
+      <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-100">{{ selected()?.name }}</h2>
+      <p class="muted text-sm">{{ selected()?.user?.name }}</p>
+
+      <div class="mt-4 relative">
+        <div *ngIf="isLoading()" class="w-full max-w-xl">
+          <div class="w-full h-56 rounded-xl2 bg-slate-200 dark:bg-slate-700 animate-pulse mb-4"></div>
+          <div class="h-6 w-3/5 rounded bg-slate-200 dark:bg-slate-700 animate-pulse mb-2"></div>
+          <div class="h-4 w-2/5 rounded bg-slate-200 dark:bg-slate-700 animate-pulse mb-4"></div>
+          <div class="h-[120px] w-full rounded-xl bg-slate-200 dark:bg-slate-700 animate-pulse"></div>
+        </div>
+
+        <iframe
+          *ngIf="feedSrc()"
+          title="Mixcloud Player"
+          width="100%"
+          height="120"
+          [src]="feedSrc()"
+          frameborder="0"
+          class="rounded-xl w-full transition-opacity duration-300"
+          allow="autoplay; encrypted-media; clipboard-write; fullscreen; picture-in-picture"
+          (load)="iframeLoaded()"
+        ></iframe>
+
+        <div *ngIf="isLoading()" class="absolute inset-0 flex items-center justify-center">
+          <div class="h-6 w-6 border-2 border-slate-300 dark:border-slate-500 border-t-blue-600 dark:border-t-blue-400 rounded-full animate-spin"></div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

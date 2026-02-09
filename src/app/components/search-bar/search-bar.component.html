@@ -1,0 +1,16 @@
+<form (ngSubmit)="submit()" class="flex items-center gap-3">
+  <div class="relative flex-1">
+    <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-lg opacity-50">🔎</span>
+
+    <input
+      [formControl]="control"
+      placeholder="Search Mixcloud…"
+      class="app-input h-10 pl-10 pr-4 w-full"
+      aria-label="Search query"
+    />
+  </div>
+
+  <button type="submit" class="btn-brand h-10" [disabled]="isLoading()">
+    Search
+  </button>
+</form>
