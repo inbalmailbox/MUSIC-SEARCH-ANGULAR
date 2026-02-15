@@ -27,7 +27,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/music-search-angular/browser
+          path: dist/music-search-angular
 
   deploy:
     needs: build
