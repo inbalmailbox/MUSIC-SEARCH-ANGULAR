@@ -23,7 +23,7 @@ jobs:
 
       - run: npm install
 
-      - run: npm run build -- --base-href "https://inbalmailbox.github.io/MUSIC-SEARCH-ANGULAR/"
+      - run: npm run build -- --base-href "/MUSIC-SEARCH-ANGULAR/"
 
       - uses: actions/upload-pages-artifact@v3
         with:
